@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Redirecting to Makrs App...</p>
+
+<script>
+    var key = "code"
+    var url = window.location.href;
+    key = key.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + key + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) alert("fail1");
+    if (!results[2]) alert("fail2");
+    var authCode = decodeURIComponent(results[2].replace(/\+/g, " "));
+    window.location.replace("makrs://stripe_auth_redirect?" + authCode);
+</script>
+
+</body>
+</html>
